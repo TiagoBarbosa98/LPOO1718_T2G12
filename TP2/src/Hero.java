@@ -10,13 +10,14 @@ public class Hero {
 	static final int LEFT_ARROW = 37;
 	static final int RIGHT_ARROW = 39;
 	
-	//Updating the position: -1 if down or left, 1 if up or right
-	private int dx;
-	private int dy;
 	
-	//current position in the map
+	//current position in the map (the hero starts in pos 1, 1)
 	private int x_pos = 1;
 	private int y_pos = 1;
+	
+	//x and y before update (to help update the map)
+	private int old_x_pos = 1;
+	private int old_y_pos = 1;
 	
 	
 	public Hero()
@@ -25,15 +26,6 @@ public class Hero {
 	
 	
 	//get methods
-	public int getDx()
-	{
-		return dx;
-	}
-	
-	public int getDy()
-	{
-		return dy;
-	}
 	
 	public int getX()
 	{
@@ -45,12 +37,20 @@ public class Hero {
 		return y_pos;
 	}
 	
-	
-	public void moveDirection(KeyEvent e)
+	public int getOldX()
 	{
-		
+		return old_x_pos;
 	}
 	
+	public int getOldY()
+	{
+		return old_y_pos;
+	}
+	
+	
+	public void updateMap()
+	{
+		}
 	
 	//receives keycode
 	public void keyPressed(KeyEvent e)
@@ -60,14 +60,18 @@ public class Hero {
 		switch(key)
 		{
 			case UP_ARROW:
-				y_pos++;
-				break;
-			case DOWN_ARROW:
+				old_y_pos = y_pos;
 				y_pos--;
 				break;
+			case DOWN_ARROW:
+				old_y_pos = y_pos;
+				y_pos++;
+				break;
 			case LEFT_ARROW:
+				old_x_pos = x_pos;
 				x_pos--;
 			case RIGHT_ARROW:
+				old_x_pos = x_pos;
 				x_pos++;			
 		}
 	}
