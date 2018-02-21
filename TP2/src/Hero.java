@@ -48,7 +48,7 @@ public class Hero {
 	}
 	
 	
-	//receives keycode and updates the hero's coordinates
+	//receives keycode and updates the hero's coordinates 
 	public void keyPressed(KeyEvent e)
 	{
 		int key = e.getKeyCode();
