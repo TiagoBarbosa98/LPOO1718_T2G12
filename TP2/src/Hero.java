@@ -64,7 +64,7 @@ public class Hero {
 		old_x_pos = newY;
 	}
 	
-	//receives keycode and updates the hero's coordinates (1 for up, 2 for down, 3 for left, 4 for right
+	//receives keycode and updates the hero's coordinates (1 for up, 2 for down, 3 for left, 4 for right)
 	public int updateHero()
 	{
 		while(!sc.hasNext())
