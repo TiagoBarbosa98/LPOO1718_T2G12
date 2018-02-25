@@ -1,5 +1,4 @@
 import java.util.Scanner;
-import java.awt.event.KeyEvent;
 
 public class Hero {
 	static Scanner sc = new Scanner(System.in);
@@ -47,29 +46,48 @@ public class Hero {
 		return old_y_pos;
 	}
 	
-	
-	//receives keycode and updates the hero's coordinates 
-	public void keyPressed(KeyEvent e)
+	//set methods
+	void setX(int newX)
 	{
-		int key = e.getKeyCode();
-		
-		switch(key)
+		x_pos = newX;
+	}
+	void setY(int newY)
+	{
+		y_pos = newY;
+	}
+	void setOldX(int newX)
+	{
+		old_x_pos = newX;
+	}
+	void setOldY(int newY)
+	{
+		old_x_pos = newY;
+	}
+	
+	//receives keycode and updates the hero's coordinates (1 for up, 2 for down, 3 for left, 4 for right
+	public int updateHero()
+	{
+		while(!sc.hasNext())
 		{
-			case UP_ARROW:
-				old_y_pos = y_pos;
-				y_pos--;
-				break;
-			case DOWN_ARROW:
-				old_y_pos = y_pos;
-				y_pos++;
-				break;
-			case LEFT_ARROW:
-				old_x_pos = x_pos;
-				x_pos--;
-			case RIGHT_ARROW:
-				old_x_pos = x_pos;
-				x_pos++;			
+			sc.next();
 		}
+		
+		String input = sc.next();
+		
+		int result = 0;
+		
+		char first = input.charAt(0);
+		
+		if(first == 'W' | first == 'w')
+		{	return 1;}
+		else if(first == 'S' | first == 's')
+		{	return 2;}
+		else if(first == 'A' | first == 'a')
+		{	return 3;}
+		else if(first == 'D' | first == 'd')
+		{	return 4;}
+		else
+			return 0;
 	}
 	
 }
