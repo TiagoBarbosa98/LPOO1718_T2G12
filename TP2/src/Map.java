@@ -116,6 +116,7 @@ public class Map {
 	}
 	
 	//if hero is in an adjacent position to the guard, end the game with a loss
+	/*TODO*/
 	public void caughtByGuard()
 	{
 		
