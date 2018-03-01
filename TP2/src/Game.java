@@ -1,17 +1,23 @@
 
 public class Game {
-
-	public static void main(String[] args) {
+	
+	/*private static boolean gameOver = false;
+	
+	public void gameEnding()
+	{
+		gameOver = true;
+	}
+	*/
+	
+	public Game()
+	{
 		Map map = new Map();
-		int i = 30;
-		
-		while(i != 0)
-		{
-			map.printMap();
-			map.updateHeroPos();
-			i--;
-		}
 		map.printMap();
+		
+		while(true)
+		{
+			map.updateHeroPos();
+		}
 
 	}
 
