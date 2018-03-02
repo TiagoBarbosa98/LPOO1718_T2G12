@@ -127,6 +127,9 @@ public class Map {
 	{
 		int update = updateHero();
 		
+		for(int i = 0; i < 50; i++)
+			System.out.println();
+		
 		/*If char in front of the hero is neither a wall nor a closed door, advance
 		 * If it is the lever, open the doors(I -> S)
 		 */
