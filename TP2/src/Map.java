@@ -34,10 +34,7 @@ public class Map {
 		
 	}
 	
-	public char[][] getMap()
-	{
-		return map;
-	}
+	
 
 	
 	//converts all the closed doors in the map (the I's) into open doors (S's)

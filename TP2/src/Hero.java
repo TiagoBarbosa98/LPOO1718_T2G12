@@ -11,12 +11,12 @@ public class Hero {
 	
 	
 	//current position in the map (the hero starts in pos 1, 1)
-	private int x_pos = 1;
-	private int y_pos = 1;
+	private int x = 1;
+	private int y = 1;
 	
 	//x and y before update (to help update the map)
-	private int old_x_pos = 1;
-	private int old_y_pos = 1;
+	private int oldx;
+	private int oldy;
 	
 	
 	public Hero()
@@ -28,40 +28,40 @@ public class Hero {
 	
 	public int getX()
 	{
-		return x_pos;
+		return x;
 	}
 	
 	public int getY()
 	{
-		return y_pos;
+		return y;
 	}
 	
 	public int getOldX()
 	{
-		return old_x_pos;
+		return oldx;
 	}
 	
 	public int getOldY()
 	{
-		return old_y_pos;
+		return oldy;
 	}
 	
 	//set methods
 	void setX(int newX)
 	{
-		x_pos = newX;
+		x = newX;
 	}
 	void setY(int newY)
 	{
-		y_pos = newY;
+		y = newY;
 	}
 	void setOldX(int newX)
 	{
-		old_x_pos = newX;
+		oldx = newX;
 	}
 	void setOldY(int newY)
 	{
-		old_x_pos = newY;
+		oldy = newY;
 	}
 	
 	//receives keycode and updates the hero's coordinates (1 for up, 2 for down, 3 for left, 4 for right)
