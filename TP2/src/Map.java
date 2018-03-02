@@ -6,6 +6,8 @@ public class Map {
 	//private fields
 	//private Hero hero = new Hero();
 	
+	private Guard guard = new Guard();
+	
 	private int heroX = 1;
 	private int heroY = 1;
 
@@ -111,24 +113,44 @@ public class Map {
 			map[x][y] = 'H';
 			printMap();
 			System.out.println();
-			gameOver(0);
+			
+			System.out.println("Congratulations! You won the game!");
+			System.exit(1);
 		}
 	}
 	
-	//if hero is in an adjacent position to the guard, end the game with a loss
-	/*TODO*/
-	public void caughtByGuard()
+	
+	public void updateGuard()
 	{
+		guard.updateGuard();
+		int guardX = guard.getGuardX();
+		int guardY = guard.getGuardY();
+		int oldGuardX = guard.getOldX();
+		int oldGuardY = guard.getOldY();
+		
+		map[oldGuardX][oldGuardY] = ' ';
+		map[guardX][guardY] = 'G';
 		
 	}
 	
+	//if hero is in an adjacent position to the guard, end the game by printing a loss message to the screenS
+		public void caughtByGuard()
+		{
+			int distanceX = Math.abs(heroX - guard.getGuardX());
+			int distanceY = Math.abs(heroY - guard.getGuardY());
+			if(distanceX < 2 & distanceY < 2)
+			{
+				printMap();
+				System.out.println('\n' + "You got caught by the guard! Game Over");
+				System.exit(1);
+			}
+		}
+	
 	//updates the map according to the conditions (hero location, guard location, doors closed or open...)
-	public void updateHeroPos()
+	public void updateMap()
 	{
-		int update = updateHero();
-		
-		for(int i = 0; i < 50; i++)
-			System.out.println();
+		caughtByGuard();
+		int update = updateHero();		
 		
 		/*If char in front of the hero is neither a wall nor a closed door, advance
 		 * If it is the lever, open the doors(I -> S)
@@ -136,6 +158,7 @@ public class Map {
 		
 		switch(update)
 		{
+			//the player moves up
 			case 1:
 				if(map[heroX - 1][heroY] != 'X' & map[heroX - 1][heroY] != 'I')
 				{
@@ -149,12 +172,14 @@ public class Map {
 					reachedOpenDoor(heroX, heroY);
 					
 					map[heroX][heroY] = 'H';
+					updateGuard();
 					
 				}
 				printMap();
 
 				break;	
 				
+			//the player moves down	
 			case 2:
 				if(map[heroX + 1][heroY] != 'X' & map[heroX + 1][heroY] != 'I')
 				{
@@ -168,12 +193,14 @@ public class Map {
 					reachedOpenDoor(heroX, heroY);
 					
 					map[heroX][heroY] = 'H';
+					updateGuard();
 					
 				}
 				printMap();
 
 				break;
 				
+			//the player moves left	
 			case 3:
 				if(map[heroX][heroY - 1] != 'X' & map[heroX][heroY - 1] != 'I')
 				{
@@ -187,12 +214,14 @@ public class Map {
 					reachedOpenDoor(heroX, heroY);
 					
 					map[heroX][heroY] = 'H';
+					updateGuard();
 				}
 					
 				printMap();
 
 				break;
-					
+				
+			//the player moves right		
 			case 4:
 				if(map[heroX][heroY + 1] != 'X' & map[heroX][heroY + 1] != 'I')
 				{
@@ -206,6 +235,7 @@ public class Map {
 					reachedOpenDoor(heroX, heroY);
 					
 					map[heroX][heroY] = 'H';
+					updateGuard();
 					
 				}
 				printMap();

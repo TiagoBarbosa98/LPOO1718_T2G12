@@ -16,7 +16,7 @@ public class Game {
 		
 		while(true)
 		{
-			map.updateHeroPos();
+			map.updateMap();
 		}
 
 	}
