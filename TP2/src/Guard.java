@@ -1,22 +1,50 @@
+import javafx.util.Pair;
 
-public class Guard {
-
-	private int x = 1;
-	private int y = 8;
+public class Guard extends Enemy {
 	
-	public int getGuardX()
-	{
-		return x;
-	}
+	private Game game;
 	
-	public int getGuardY()
-	{
-		return y;
-	}
-	
-	public void guardMovement()
-	{
+	//current position in the map
+	private int x;
+			
+	private int y;
 		
+	protected Pair<Integer,Integer> coordinates = new Pair<>(x,y);
+	
+	//symbol displayed
+	private char symbol = 'G';
+	
+	//get methods
+	public int getGuardX() { return x; }
+	
+	public int getGuardY() { return y; }
+	
+	//get methods
+	public char getSymbol() { return symbol; }
+	
+	//constructor
+	public Guard(int posx, int posy, Game game) 
+	{
+		super(posx, posy, game);
+	}
+	
+	public void updatePosition() 
+	{
+		if (y == 1 & x < 6) {
+			x++;
+		}
+		if (x == 6 & y > 1) {
+			y--;
+		}
+		if (y == 1 & x > 5) {
+			x--;
+		}
+		if (x == 5 & y < 7) {
+			y++;
+		}
+		if (y == 7 & x > 1) {
+			x--;
+		}
 	}
 	
 }
