@@ -47,4 +47,49 @@ public class Guard extends Enemy {
 		}
 	}
 	
+	public int getOldY()
+	{
+		return oldy;
+	}
+	
+	public void updateGuard()
+	{	
+		if(x == 1 & y == 8)
+		{
+			oldy = y;
+			oldx = x;
+			y--;
+		}
+		else if(y == 7 & x < 5)
+		{
+			oldx = x;
+			oldy = y;
+			x++;
+		}
+		else if(x == 5 & y > 1 & y < 8)
+		{	
+			oldx = x;
+			oldy = y;
+			y--;
+		}
+		else if(x == 5 & y == 1)
+		{
+			oldx = x;
+			oldy = y;
+			x++;
+		}
+		else if(x == 6 & y < 8)
+		{
+			oldx = x;
+			oldy = y;
+			y++;
+		}
+		else if(x > 1 & y == 8)
+		{
+			oldx = x;
+			oldy = y;
+			x--;
+		}
+	}
+	
 }
