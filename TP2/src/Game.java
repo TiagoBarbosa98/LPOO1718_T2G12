@@ -33,13 +33,24 @@ public class Game {
 		door6 = new Door(8, 2, this);
 		door7 = new Door(8, 4, this);
 		key = new Key(8, 7, this, door4, door5);
-		while (!gameOver) {
+		while (true) {
 			setBuffer();
 			printBuffer();
 			hero.updateEntity();
 			guard.updateEntity();
 			key.updateEntity();
-			gameOver = hero.isNear(guard);
+			heroNearGuard();
+		}
+	}
+	
+	public void heroNearGuard()
+	{
+		if(hero.isNear(guard))
+		{
+			setBuffer();
+			printBuffer();
+			System.out.println('\n' + "Game Over! You got caught by the guard!");
+			System.exit(1);
 		}
 	}
 
