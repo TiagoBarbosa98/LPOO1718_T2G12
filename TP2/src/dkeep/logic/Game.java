@@ -1,21 +1,15 @@
+package dkeep.logic;
 import java.util.Scanner;
 
 public class Game {
 
 	static Scanner sc = new Scanner(System.in);
 	
-	private boolean gameOver;
+	protected boolean gameOver;
 	
-	protected Map map = new Map(this);
+	protected Map map = new Map(1);
 	protected Entity hero;
 	protected Entity guard;
-	protected Door door1;
-	protected Door door2;
-	protected Door door3;
-	protected Door door4;
-	protected Door door5;
-	protected Door door6;
-	protected Door door7;
 	protected Entity key;
 	
 	protected Entity entities[] = {hero, guard, door1, door2, door3, door4, door5, door6, door7, key};
@@ -40,6 +34,7 @@ public class Game {
 			guard.updateEntity();
 			key.updateEntity();
 			heroNearGuard();
+			heroReachedOpenDoor();
 		}
 	}
 	
@@ -51,6 +46,15 @@ public class Game {
 			printBuffer();
 			System.out.println('\n' + "Game Over! You got caught by the guard!");
 			System.exit(1);
+		}
+	}
+	
+	public void heroReachedOpenDoor()
+	{
+		if((hero.getX() == 5 & hero.getOldY() == 0) | hero.getX() == 6 & hero.getY() == 0)
+		{
+			SecondLevel newLevel = new SecondLevel();
+			newLevel.init2ndLevel();
 		}
 	}
 

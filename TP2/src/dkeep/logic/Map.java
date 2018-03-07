@@ -1,7 +1,6 @@
+package dkeep.logic;
 
 public class Map {
-	
-	private Game game;
 	
 	//actual map
 	private char[][] map;
@@ -37,10 +36,18 @@ public class Map {
 		};
 
 	//basic constructor for the class
-	public Map(Game game)
+	public Map(int mapNumber) //1 for first level, 2 for second level)
+	{	
+		if(mapNumber == 1)
+			map = dungeon;
+		else if(mapNumber == 2)
+			map = boss;		
+	}
+	
+	//set method for the current map
+	public void setNewMap()
 	{
-		this.game = game;
-		map = dungeon;
+		this.map = boss;
 	}
 	
 	

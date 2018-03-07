@@ -1,3 +1,4 @@
+package dkeep.logic;
 
 public class Hero extends Entity{
 	
@@ -37,6 +38,8 @@ public class Hero extends Entity{
 				this.old_y = y;
 				this.y--;
 			}
+			else if((game.buffer[x][y - 1] == 'I' & (x == 5 & y - 1 == 6)) | (game.buffer[x][y - 1] == 'I' & (x == 6 & y - 1 == 6)))
+					System.out.println('\n' + "The doors are still closed" + '\n');
 			break;
 		case 'D' | 'd':
 			if (game.buffer[x][y + 1] != 'I') {
