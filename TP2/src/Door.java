@@ -1,22 +1,42 @@
-import javafx.util.Pair;
 
-public class Door extends Static {
+public class Door extends Object {
 	
-	private Game game;
-
-	protected Pair<Integer,Integer> coordinates = new Pair<>(x,y);
+	//true is the door is opened, and false if the door is closed
+	private boolean isOpen;
 	
-	//symbol displayed
-	protected char symbol = 'I';
-	
-	//returns true is the door is opened, and false if the door is closed
-	private boolean isOpen = false;
+	private Door door1;
 	
 	public Door(int xpos, int ypos, Game game) 
 	{
 		super(xpos, ypos, game);
+		symbol = 'I';
+		isOpen = false;
+		this.door1 = null;
 	}
 	
-	//get methods
-	public char getSymbol() { return symbol; }
+	public Door(int xpos, int ypos, Game game, Door door) 
+	{
+		super(xpos, ypos, game);
+		symbol = 'I';
+		isOpen = false;
+		this.door1 = door;
+	}
+	
+	//opens the door, changing his symbol
+	public void openDoor()
+	{
+		if (!isOpen) {
+			isOpen = true;
+			symbol = 'S';
+		}
+	}
+	
+	//closes the door, changing his symbol
+	public void closeDoor() 
+	{
+		if (isOpen) {
+			isOpen = false;
+			symbol = 'I';
+		}
+	}
 }

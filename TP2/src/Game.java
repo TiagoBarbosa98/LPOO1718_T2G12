@@ -1,34 +1,45 @@
-//import java.util.HashMap;
-//import javafx.util.Pair;
 import java.util.Scanner;
 
 public class Game {
 
 	static Scanner sc = new Scanner(System.in);
 	
-	Map map = new Map(this);
-	Entity hero = new Hero(1, 1, this);
-	Entity guard = new Guard(1, 8, this);
-	Entity key = new Key(8, 7, this);
-	Entity door1 = new Door(1, 4, this);
-	Entity door2 = new Door(3, 2, this);
-	Entity door3 = new Door(3, 4, this);
-	Entity door4 = new Door(5, 0, this);
-	Entity door5 = new Door(6, 0, this);
-	Entity door6 = new Door(8, 2, this);
-	Entity door7 = new Door(8, 4, this);
+	private boolean gameOver;
 	
-	private boolean gameOver = false;
+	protected Map map = new Map(this);
+	protected Entity hero;
+	protected Entity guard;
+	protected Door door1;
+	protected Door door2;
+	protected Door door3;
+	protected Door door4;
+	protected Door door5;
+	protected Door door6;
+	protected Door door7;
+	protected Entity key;
 	
-	private char [][] buffer = new char[10][10];
+	protected Entity entities[] = {hero, guard, door1, door2, door3, door4, door5, door6, door7, key};
+	
+	protected char [][] buffer = new char[10][10];
 
 	public Game() {
+		hero = new Hero(1, 1, this);
+		guard = new Guard(1, 8, this);
+		door1 = new Door(1, 4, this);
+		door2 = new Door(3, 2, this);
+		door3 = new Door(3, 4, this);
+		door4 = new Door(5, 0, this);
+		door5 = new Door(6, 0, this);
+		door6 = new Door(8, 2, this);
+		door7 = new Door(8, 4, this);
+		key = new Key(8, 7, this, door4, door5);
 		while (!gameOver) {
 			setBuffer();
 			printBuffer();
-			hero.updatePosition();
-			guard.updatePosition();
-			resetBuffer();
+			hero.updateEntity();
+			guard.updateEntity();
+			key.updateEntity();
+			gameOver = hero.isNear(guard);
 		}
 	}
 
@@ -61,11 +72,6 @@ public class Game {
 			}
 			System.out.println();
 		}
-	}
-
-	public void resetBuffer() 
-	{
-		buffer = map.getMap();
 	}
 	
 	// prints the buffer
