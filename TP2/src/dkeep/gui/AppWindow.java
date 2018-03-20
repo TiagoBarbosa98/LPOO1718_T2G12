@@ -44,7 +44,7 @@ public class AppWindow {
 	public AppWindow() {
 		initialize();
 	}
-
+ 
 	/**
 	 * Initialize the contents of the frame.
 	 */
