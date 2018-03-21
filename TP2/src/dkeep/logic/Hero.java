@@ -33,7 +33,11 @@ public class Hero extends Entity{
 			}
 			break;
 		case 'A' | 'a':
-			if (game.buffer[x][y - 1] != 'I') {
+			if(game.buffer[x][y - 1] == 'S')
+			{
+				
+			}
+			else if (game.buffer[x][y - 1] != 'I') {
 				this.old_x = x;
 				this.old_y = y;
 				this.y--;
