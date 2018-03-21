@@ -11,6 +11,14 @@ public class Game {
 	protected Entity hero;
 	protected Entity guard;
 	protected Entity key;
+	protected Entity door1;
+	protected Entity door2;
+	protected Entity door3;
+	protected Entity door4;
+	protected Entity door5;
+	protected Entity door6;
+	protected Entity door7;
+	
 	
 	protected Entity entities[] = {hero, guard, door1, door2, door3, door4, door5, door6, door7, key};
 	
