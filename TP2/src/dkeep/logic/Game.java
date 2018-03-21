@@ -7,17 +7,17 @@ public class Game {
 	
 	protected boolean gameOver;
 	
-	protected Map map = new Map(1);
+	protected Map map = new Map();
 	protected Entity hero;
 	protected Entity guard;
 	protected Entity key;
-	protected Entity door1;
-	protected Entity door2;
-	protected Entity door3;
-	protected Entity door4;
-	protected Entity door5;
-	protected Entity door6;
-	protected Entity door7;
+	protected Door door1;
+	protected Door door2;
+	protected Door door3;
+	protected Door door4;
+	protected Door door5;
+	protected Door door6;
+	protected Door door7;
 	
 	
 	protected Entity entities[] = {hero, guard, door1, door2, door3, door4, door5, door6, door7, key};
