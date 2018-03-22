@@ -93,7 +93,7 @@ public class Entity {
 			break;
 		}
 
-		if (game.map.getMap()[x][y] == 'X') {
+		if (game.getMap()[x][y] == 'X') {
 			x = old_x;
 			y = old_y;
 		}
@@ -102,19 +102,9 @@ public class Entity {
 	
 	public boolean isNear(Entity entity) 
 	{
-		if (entity.getX() == this.x) {
-			if(entity.getY() == this.y - 1 | entity.getY() == this.y +1 | entity.getY() == this.y) {
-				return true;
-			}
-			else return false;
-		}
-		else if (entity.getY() == this.y) {
-			if(entity.getX() == this.x - 1 | entity.getX() == this.x +1 | entity.getX() == this.x) {
-				return true;
-			}
-			else return false;
-		}
-		else return false;
+		if(Math.abs(this.getX() - entity.getX()) < 2 & Math.abs(this.getY() - entity.getY()) < 2)
+			return true;
+		return false;
 	}
 	
 	//returns true if one entity has the object (stepped into object's position)
