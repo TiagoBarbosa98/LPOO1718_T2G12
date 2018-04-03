@@ -30,34 +30,55 @@ public class Hero extends Entity{
 		char first = movementInput();
 
 		switch (first) {
-		case 'W' | 'w':
+		case 'W':
 			if (map.getMap()[x - 1][y] != 'I') {
 				this.old_y = y;
 				this.old_x = x;
 				this.x--;
 			}
 			break;
-		case 'S' | 's':
+		case 'w':
+			if (map.getMap()[x - 1][y] != 'I') {
+				this.old_y = y;
+				this.old_x = x;
+				this.x--;
+			}
+			break;
+		case 'S':
+			if (map.getMap()[x + 1][y] != 'I') {
+				this.old_y = y;
+				this.old_x = x;
+				this.x++;
+			}
+		case 's':
 			if (map.getMap()[x + 1][y] != 'I') {
 				this.old_y = y;
 				this.old_x = x;
 				this.x++;
 			}
 			break;
-		case 'A' | 'a':
-			if(map.getMap()[x][y - 1] == 'S')
-			{
-				
-			}
-			else if (map.getMap()[x][y - 1] != 'I') {
+		case 'A':
+			if (map.getMap()[x][y - 1] != 'I') {
 				this.old_x = x;
 				this.old_y = y;
 				this.y--;
 			}
-			else if((map.getMap()[x][y - 1] == 'I' & (x == 5 & y - 1 == 6)) | (map.getMap()[x][y - 1] == 'I' & (x == 6 & y - 1 == 6)))
-					System.out.println('\n' + "The doors are still closed" + '\n');
 			break;
-		case 'D' | 'd':
+		case 'a':
+			if (map.getMap()[x][y - 1] != 'I') {
+				this.old_x = x;
+				this.old_y = y;
+				this.y--;
+			}
+			break;
+		case 'D':
+			if (map.getMap()[x][y + 1] != 'I') {
+				this.old_x = x;
+				this.old_y = y;
+				this.y++;
+			}
+			break;
+		case 'd':
 			if (map.getMap()[x][y + 1] != 'I') {
 				this.old_x = x;
 				this.old_y = y;

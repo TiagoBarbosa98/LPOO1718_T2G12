@@ -1,19 +1,23 @@
 package dkeep.logic;
-import java.util.Set;
+import java.util.ArrayList;
 
 public abstract class Map {
 	
-	protected Hero hero;
-	protected Guard guard;
-	protected Key key;
+	protected Game game;
 	
-	//actual map
+	//list of entities
+	protected ArrayList<Entity> entities = new ArrayList<Entity>();	
+	
+	//updated map
 	protected char[][] map;
 	
-	//basic constructor for the class
-	public Map() 
-	{	
+	//base map
+	protected char[][] basemap;
 	
+	//basic constructor for the class
+	public Map(Game game) 
+	{	
+		this.game = game;
 	}	
 	
 	//returns the map
@@ -23,8 +27,8 @@ public abstract class Map {
 	}
 	
 	//prints the map
-	public void printMap() {
-		
+	public void printMap() 
+	{
 		for (int i = 0; i < map.length; i++) {
 			for (int j = 0; j < map[i].length; j++) {
 				
@@ -38,6 +42,18 @@ public abstract class Map {
 	//rules of the game for a specific map
 	public abstract void gameLogic();
 	
-	public abstract void updateEntity();
+	public void updateEntities() {
+		for(int i = 0; i < entities.size(); i++) {
+			entities.get(i).updateEntity();
+		}
+	}
+	
+	public void drawEntities() {
+		for(int i = 0; i < entities.size(); i++) {
+			if(map[entities.get(i).x][entities.get(i).y] == ' ') {
+				map[entities.get(i).x][entities.get(i).y] = entities.get(i).symbol;
+			}
+		}
+	}
 }
 

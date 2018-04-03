@@ -1,6 +1,6 @@
 package dkeep.logic;
 
-public class Entity {
+public abstract class Entity {
 
 	protected Map map;
 
@@ -55,56 +55,12 @@ public class Entity {
 	
 	
 	//other methods
-	public void updateEntity()
-	{
-		
-		int i = index % movement.length();
-				
-		char first = movement.charAt(i);
-		
-		switch (first) {
-		case 'W' | 'w':
-			if (map.getMap()[x - 1][y] != 'I') {
-				this.old_y = y;
-				this.old_x = x;
-				this.x--;
-			}
-			break;
-		case 'S' | 's':
-			if (map.getMap()[x + 1][y] != 'I') {
-				this.old_y = y;
-				this.old_x = x;
-				this.x++;
-			}
-			break;
-		case 'A' | 'a':
-			if (map.getMap()[x][y - 1] != 'I') {
-				this.old_x = x;
-				this.old_y = y;
-				this.y--;
-			}
-			break;
-		case 'D' | 'd':
-			if (map.getMap()[x][y + 1] != 'I') {
-				this.old_x = x;
-				this.old_y = y;
-				this.y++;
-			}
-			break;
-		}
-
-		if (map.getMap()[x][y] == 'X') {
-			x = old_x;
-			y = old_y;
-		}
-		index++;
-	}
+	public abstract void updateEntity();
 	
 	public boolean isNear(Entity entity) 
 	{
-		if(Math.abs(this.getX() - entity.getX()) < 2 & Math.abs(this.getY() - entity.getY()) < 2)
-			return true;
-		return false;
+		if(this.getX() == entity.getX() - 1 || this.getX() == entity.getX() + 1 || this.getY() == entity.getY() - 1 || this.getY() == entity.getY() + 1) return true;
+		else return false;
 	}
 	
 	//returns true if one entity has the object (stepped into object's position)

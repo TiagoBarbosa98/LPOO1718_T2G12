@@ -9,7 +9,10 @@ public class Game {
 	public Game(){}
 	
 	public void initialize() {
-		while()
+		map = new Level1(this);
+		while(state != Game.State.WIN | state != Game.State.LOSE) {
+			map.gameLogic();
+		}
 	}
 }
 	

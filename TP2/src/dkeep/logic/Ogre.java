@@ -10,8 +10,12 @@ public class Ogre extends Entity{
 	{
 		super(posx, posy, map);
 		symbol = 'O';
-		movement = "wasd";
-		index = rn.nextInt(4);
+	}
+
+	@Override
+	public void updateEntity() {
+		// TODO Auto-generated method stub
+		
 	}
 	
 	
