@@ -6,9 +6,10 @@ public class Ogre extends Entity{
 	Random rn = new Random();
 	
 	//constructor
-	public Ogre(int posx, int posy, Game game) 
+	public Ogre(int posx, int posy, Map map) 
 	{
-		super(posx, posy, game);
+		super(posx, posy, map);
+		symbol = 'O';
 		movement = "wasd";
 		index = rn.nextInt(4);
 	}

@@ -1,6 +1,11 @@
 package dkeep.logic;
+import java.util.Set;
 
-public class Map {
+public abstract class Map {
+	
+	protected Hero hero;
+	protected Guard guard;
+	protected Key key;
 	
 	//actual map
 	protected char[][] map;
@@ -20,14 +25,19 @@ public class Map {
 	//prints the map
 	public void printMap() {
 		
-		for (int i = 0; i < dungeon.length; i++) {
-			for (int j = 0; j < dungeon[i].length; j++) {
+		for (int i = 0; i < map.length; i++) {
+			for (int j = 0; j < map[i].length; j++) {
 				
-				System.out.print(dungeon[i][j]);
+				System.out.print(map[i][j]);
 				System.out.print(' ');
 				} 
 			System.out.println();
 			}	
 	}
 
+	//rules of the game for a specific map
+	public abstract void gameLogic();
+	
+	public abstract void updateEntity();
 }
+

@@ -3,8 +3,8 @@ package dkeep.logic;
 public class Object extends Entity{
 	
 	//constructor
-	public Object(int xpos, int ypos, Game game) 
+	public Object(int xpos, int ypos, Map map) 
 	{
-		super(xpos, ypos, game);
+		super(xpos, ypos, map);
 	}	
 }

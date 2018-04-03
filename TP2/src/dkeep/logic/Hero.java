@@ -1,11 +1,14 @@
 package dkeep.logic;
+import java.util.Scanner;
 
 public class Hero extends Entity{
 	
+	static Scanner sc = new Scanner(System.in);
+	
 	//constructor
-	public Hero(int xpos, int ypos, Game game) 
+	public Hero(int xpos, int ypos, Map map) 
 	{
-		super(xpos, ypos, game);
+		super(xpos, ypos, map);
 		symbol = 'H';
 	}	
 	
@@ -13,40 +16,40 @@ public class Hero extends Entity{
 	public void updateEntity() 
 	{
 
-		String input = game.sc.next();
+		String input = sc.next();
 
 		char first = input.charAt(0);
 
 		switch (first) {
 		case 'W' | 'w':
-			if (game.buffer[x - 1][y] != 'I') {
+			if (map.getMap()[x - 1][y] != 'I') {
 				this.old_y = y;
 				this.old_x = x;
 				this.x--;
 			}
 			break;
 		case 'S' | 's':
-			if (game.buffer[x + 1][y] != 'I') {
+			if (map.getMap()[x + 1][y] != 'I') {
 				this.old_y = y;
 				this.old_x = x;
 				this.x++;
 			}
 			break;
 		case 'A' | 'a':
-			if(game.buffer[x][y - 1] == 'S')
+			if(map.getMap()[x][y - 1] == 'S')
 			{
 				
 			}
-			else if (game.buffer[x][y - 1] != 'I') {
+			else if (map.getMap()[x][y - 1] != 'I') {
 				this.old_x = x;
 				this.old_y = y;
 				this.y--;
 			}
-			else if((game.buffer[x][y - 1] == 'I' & (x == 5 & y - 1 == 6)) | (game.buffer[x][y - 1] == 'I' & (x == 6 & y - 1 == 6)))
+			else if((map.getMap()[x][y - 1] == 'I' & (x == 5 & y - 1 == 6)) | (map.getMap()[x][y - 1] == 'I' & (x == 6 & y - 1 == 6)))
 					System.out.println('\n' + "The doors are still closed" + '\n');
 			break;
 		case 'D' | 'd':
-			if (game.buffer[x][y + 1] != 'I') {
+			if (map.getMap()[x][y + 1] != 'I') {
 				this.old_x = x;
 				this.old_y = y;
 				this.y++;
@@ -54,7 +57,7 @@ public class Hero extends Entity{
 			break;
 		}
 
-		if (game.map.getMap()[x][y] == 'X') {
+		if (map.getMap()[x][y] == 'X') {
 			x = old_x;
 			y = old_y;
 		}

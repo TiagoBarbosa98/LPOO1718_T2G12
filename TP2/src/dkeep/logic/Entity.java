@@ -2,7 +2,7 @@ package dkeep.logic;
 
 public class Entity {
 
-	protected Game game;
+	protected Map map;
 
 	protected int x,y; //current position in the map
 	
@@ -22,9 +22,9 @@ public class Entity {
 	
 	
 	//constructor
-	public Entity(int xpos, int ypos, Game game) 
+	public Entity(int xpos, int ypos, Map map) 
 	{
-		this.game = game;
+		this.map = map;
 		x = xpos;
 		y = ypos;
 	}
@@ -64,28 +64,28 @@ public class Entity {
 		
 		switch (first) {
 		case 'W' | 'w':
-			if (game.buffer[x - 1][y] != 'I') {
+			if (map.getMap()[x - 1][y] != 'I') {
 				this.old_y = y;
 				this.old_x = x;
 				this.x--;
 			}
 			break;
 		case 'S' | 's':
-			if (game.buffer[x + 1][y] != 'I') {
+			if (map.getMap()[x + 1][y] != 'I') {
 				this.old_y = y;
 				this.old_x = x;
 				this.x++;
 			}
 			break;
 		case 'A' | 'a':
-			if (game.buffer[x][y - 1] != 'I') {
+			if (map.getMap()[x][y - 1] != 'I') {
 				this.old_x = x;
 				this.old_y = y;
 				this.y--;
 			}
 			break;
 		case 'D' | 'd':
-			if (game.buffer[x][y + 1] != 'I') {
+			if (map.getMap()[x][y + 1] != 'I') {
 				this.old_x = x;
 				this.old_y = y;
 				this.y++;
@@ -93,7 +93,7 @@ public class Entity {
 			break;
 		}
 
-		if (game.map.getMap()[x][y] == 'X') {
+		if (map.getMap()[x][y] == 'X') {
 			x = old_x;
 			y = old_y;
 		}

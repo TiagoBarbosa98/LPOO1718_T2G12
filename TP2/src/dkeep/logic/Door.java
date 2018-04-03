@@ -7,17 +7,19 @@ public class Door extends Object {
 	
 	private Door door1;
 	
-	public Door(int xpos, int ypos, Game game) 
+	//constructor for simple door
+	public Door(int xpos, int ypos, Map map) 
 	{
-		super(xpos, ypos, game);
+		super(xpos, ypos, map);
 		symbol = 'I';
 		isOpen = false;
 		this.door1 = null;
 	}
 	
-	public Door(int xpos, int ypos, Game game, Door door) 
+	//constructor for double door
+	public Door(int xpos, int ypos, Map map, Door door) 
 	{
-		super(xpos, ypos, game);
+		super(xpos, ypos, map);
 		symbol = 'I';
 		isOpen = false;
 		this.door1 = door;
