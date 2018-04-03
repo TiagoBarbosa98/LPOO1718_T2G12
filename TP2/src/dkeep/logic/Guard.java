@@ -7,7 +7,7 @@ public class Guard extends Entity {
 	{
 		super(posx, posy, map);
 		symbol = 'G';
-		movement = "sssssaaaaaaawddddddwwwwd";
+		movement = "assssaaaaaasdddddddwwwww";
 		index = 0;
 	}
 

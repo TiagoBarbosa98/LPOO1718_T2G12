@@ -34,12 +34,4 @@ public class Door extends Object {
 		}
 	}
 	
-	//closes the door, changing his symbol
-	public void closeDoor() 
-	{
-		if (isOpen) {
-			isOpen = false;
-			symbol = 'I';
-		}
-	}
 }
