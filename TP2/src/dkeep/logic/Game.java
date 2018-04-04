@@ -14,5 +14,10 @@ public class Game {
 			map.gameLogic();
 		}
 	}
+	
+	public Map getMap()
+	{
+		return map;
+	}
 }
 	
