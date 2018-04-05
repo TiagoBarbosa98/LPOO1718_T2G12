@@ -48,6 +48,7 @@ public class Level1 extends Map {
 		this.draw();
 		this.heroCollision();
 		this.leverStepped();
+		this.enterDoor();
 	}
 	
 	public void resetMap() {
@@ -63,6 +64,7 @@ public class Level1 extends Map {
 			key.door1.openDoor();
 			key.door2.openDoor();
 			key.symbol = ' ';
+			this.draw();
 		}
 	}
 
@@ -84,11 +86,14 @@ public class Level1 extends Map {
 
 	public void enterDoor() {
 		if (hero.getX() == door4.getX() && hero.getY() == door4.getY()) {
-			game.state = Game.State.LEVEL2;
-			game.map = new Level2(this.game);
+			this.game.state = Game.State.LEVEL2;
+			this.game.map = new Level2(this.game);
+			this.game.map.draw();
 		}
 		else if (hero.getX() == door5.getX() && hero.getY() == door5.getY()) {
-			game.state = Game.State.LEVEL2;
+			this.game.state = Game.State.LEVEL2;
+			this.game.map = new Level2(this.game);
+			this.game.map.draw();
 		}
 	}
 }

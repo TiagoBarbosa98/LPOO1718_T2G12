@@ -9,6 +9,10 @@ public class Level2 extends Map{
 	
 	public Level2(Game game) {
 		super(game);
+		entities.add(hero);
+		entities.add(ogre);
+		entities.add(door1);
+		entities.add(key);
 		this.basemap = new char[][]	{ 
 			{ 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X' },
 			{ ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'X' }, 
@@ -19,9 +23,7 @@ public class Level2 extends Map{
 			{ 'X', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'X' },
 			{ 'X', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'X' }, 
 			{ 'X', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'X' },
-			{ 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X' }};
-		this.map = new char[10][10];	
-		
+			{ 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X' }};		
 	}
 
 	@Override

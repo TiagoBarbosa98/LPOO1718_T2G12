@@ -5,7 +5,7 @@ public class Game {
 	protected Map map;
 	private boolean gameover = false;
 	public enum State {MENU, LEVEL1, LEVEL2, WIN, LOSE}
-	public State state = Game.State.MENU;
+	public State state = Game.State.LEVEL1;
 	
 	public Game(){}
 
@@ -15,7 +15,7 @@ public class Game {
 		map.draw();
 		
 		while (!gameover) {
-
+			System.out.println(state);
 			switch (state) {
 			case MENU:
 			case LEVEL1:
