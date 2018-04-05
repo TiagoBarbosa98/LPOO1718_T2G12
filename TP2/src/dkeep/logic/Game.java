@@ -34,4 +34,9 @@ public class Game {
 			
 		}
 	}
+	
+	public Map getMap()
+	{
+		return map;
+	}
 }
