@@ -1,11 +1,14 @@
 package dkeep.logic;
-import java.util.Scanner;
 
 import java.util.Scanner;
+
+import dkeep.cli.Main;
 
 public class Hero extends Entity{
 	
 	static Scanner sc = new Scanner(System.in);
+	
+	private Main main;
 	
 	//constructor
 	public Hero(int xpos, int ypos, Map map) 
@@ -14,20 +17,10 @@ public class Hero extends Entity{
 		symbol = 'H';
 	}
 	
-	public char movementInput()
-	{
-
-		String input = sc.next();
-
-		char first = input.charAt(0);
-		
-		return first;
-	}
-	
 	//updates hero's position based on keyboard input
 	public void updateEntity() 
 	{
-		char first = movementInput();
+		char first = sc.next().charAt(0);
 
 		switch (first) {
 		case 'W':
@@ -92,5 +85,4 @@ public class Hero extends Entity{
 			y = old_y;
 		}
 	}
-
 }

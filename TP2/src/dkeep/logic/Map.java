@@ -9,7 +9,7 @@ public abstract class Map {
 	protected ArrayList<Entity> entities = new ArrayList<Entity>();	
 	
 	//updated map
-	protected char[][] map;
+	protected char[][] map = new char[10][10];
 	
 	//base map
 	protected char[][] basemap;
@@ -31,7 +31,6 @@ public abstract class Map {
 	{
 		for (int i = 0; i < map.length; i++) {
 			for (int j = 0; j < map[i].length; j++) {
-				
 				System.out.print(map[i][j]);
 				System.out.print(' ');
 				} 
@@ -41,6 +40,13 @@ public abstract class Map {
 
 	//rules of the game for a specific map
 	public abstract void gameLogic();
+
+	public void draw() {
+		this.resetMap();
+		this.drawEntities();
+		this.printMap();
+
+	}
 	
 	public void updateEntities() {
 		for(int i = 0; i < entities.size(); i++) {
@@ -55,5 +61,7 @@ public abstract class Map {
 			}
 		}
 	}
+	
+	public abstract void resetMap();
 }
 

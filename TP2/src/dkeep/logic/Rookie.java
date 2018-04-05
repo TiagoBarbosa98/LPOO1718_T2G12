@@ -11,6 +11,7 @@ public class Rookie extends Guard{
 	@Override
 	public void updateEntity() 
 	{
-		this.moveForward();
+		this.move();
+		index++;
 	}
 }

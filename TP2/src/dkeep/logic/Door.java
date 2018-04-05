@@ -1,6 +1,6 @@
 package dkeep.logic;
 
-public class Door extends Object {
+public class Door extends Entity {
 	
 	//true is the door is opened, and false if the door is closed
 	private boolean isOpen;
@@ -32,6 +32,12 @@ public class Door extends Object {
 			isOpen = true;
 			symbol = 'S';
 		}
+	}
+
+	@Override
+	public void updateEntity() {
+		// TODO Auto-generated method stub
+		
 	}
 	
 }

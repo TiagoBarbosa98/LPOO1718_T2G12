@@ -34,19 +34,23 @@ public class Drunken extends Guard {
 			}
 			else {
 				if(!reverse) {
-					this.moveForward();
+					this.move();
+					index++;
 				}
 				else if(reverse) {
-					this.moveReverse();
+					this.move();
+					index--;
 				}
 			}
 		}
 		else if(!sleep && time_out_s != 0) {
 			if(!reverse) {
-				this.moveForward();
+				this.move();
+				index++;
 			}
 			else if(reverse) {
-				this.moveReverse();
+				this.move();
+				index--;
 			}
 			time_out_s --;
 		}
@@ -59,10 +63,12 @@ public class Drunken extends Guard {
 					if(!reverse) {
 						movement = rev_sequence;
 						reverse = true;
+						index--;
 					}
 					else if(reverse) {
 						movement = sequence;
 						reverse = false;
+						index++;
 					}
 				}
 			}

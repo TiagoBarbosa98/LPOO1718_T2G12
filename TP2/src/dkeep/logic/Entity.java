@@ -59,12 +59,27 @@ public abstract class Entity {
 	
 	public boolean isNear(Entity entity) 
 	{
-		if(this.getX() == entity.getX() - 1 || this.getX() == entity.getX() + 1 || this.getY() == entity.getY() - 1 || this.getY() == entity.getY() + 1) return true;
+		if(this.getX() == entity.getX()){
+			if(this.getY() == entity.getY() + 1 || this.getY() == entity.getY() - 1) {
+				return true;
+			}
+			else {
+				return false;
+			}
+		}
+		else if(this.getY() == entity.getY()){
+			if (this.getX() == entity.getX() + 1 || this.getX() == entity.getX() - 1) {
+				return true;
+			}
+			else {
+				return false;
+			}
+		}
 		else return false;
 	}
 	
 	//returns true if one entity has the object (stepped into object's position)
-	public boolean hasObject(Object object) 
+	public boolean hasObject(Entity object) 
 	{
 		if (this.x == object.x & this.y == object.y)
 		{

@@ -38,19 +38,16 @@ public class Level1 extends Map {
 				{ 'X', 'X', 'X', ' ', 'X', 'X', 'X', 'X', ' ', 'X' },
 				{ 'X', ' ', ' ', ' ', ' ', ' ', 'X', ' ', ' ', 'X' },
 				{ 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X' } };
-		this.map = new char[10][10];
 	}
 
 	
 	
 	@Override
 	public void gameLogic() {
-		this.resetMap();
-		this.drawEntities();
-		this.printMap();
 		this.updateEntities();
-		if (this.hero.isNear(guard)) this.game.state = Game.State.LOSE;
-		
+		this.draw();
+		this.heroCollision();
+		this.leverStepped();
 	}
 	
 	public void resetMap() {
@@ -58,6 +55,40 @@ public class Level1 extends Map {
 			for(int j = 0; j < basemap[i].length; j++) {
 				map[i][j] = basemap[i][j];
 			}
+		}
+	}
+	
+	public void leverStepped() {
+		if(key.getX() == hero.getX() && key.getY() == hero.getY()) {
+			key.door1.openDoor();
+			key.door2.openDoor();
+			key.symbol = ' ';
+		}
+	}
+
+	public void heroCollision() {
+		if (hero.getY() != 0) {
+			if (map[hero.getX()][hero.getY() + 1] == 'G') {
+				game.state = Game.State.LOSE;
+			} else if (map[hero.getX()][hero.getY() - 1] == 'G') {
+				game.state = Game.State.LOSE;
+			} else if (map[hero.getX() + 1][hero.getY()] == 'G') {
+				game.state = Game.State.LOSE;
+			} else if (map[hero.getX() - 1][hero.getY()] == 'G') {
+				game.state = Game.State.LOSE;
+			} else if (hero.getX() == guard.getX() && hero.getY() == guard.getY()) {
+				game.state = Game.State.LOSE;
+			}
+		}
+	}
+
+	public void enterDoor() {
+		if (hero.getX() == door4.getX() && hero.getY() == door4.getY()) {
+			game.state = Game.State.LEVEL2;
+			game.map = new Level2(this.game);
+		}
+		else if (hero.getX() == door5.getX() && hero.getY() == door5.getY()) {
+			game.state = Game.State.LEVEL2;
 		}
 	}
 }

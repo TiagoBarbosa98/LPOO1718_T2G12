@@ -9,7 +9,7 @@ public class Level2 extends Map{
 	
 	public Level2(Game game) {
 		super(game);
-		this.map = new char[][]	{ 
+		this.basemap = new char[][]	{ 
 			{ 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X' },
 			{ ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'X' }, 
 			{ 'X', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'X' },
@@ -19,14 +19,23 @@ public class Level2 extends Map{
 			{ 'X', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'X' },
 			{ 'X', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'X' }, 
 			{ 'X', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'X' },
-			{ 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X' }
-		};
+			{ 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X' }};
+		this.map = new char[10][10];	
+		
 	}
 
 	@Override
 	public void gameLogic() {
-		// TODO Auto-generated method stub
-		
+		this.updateEntities();
+		this.draw();
 	}
-	
+
+	public void resetMap() {
+		for(int i = 0; i < basemap.length; i++) {
+			for(int j = 0; j < basemap[i].length; j++) {
+				map[i][j] = basemap[i][j];
+			}
+		}
+	}
+
 }

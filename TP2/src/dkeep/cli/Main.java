@@ -4,8 +4,9 @@ import dkeep.logic.Game;
 
 public class Main {
 	
+	private static Game game = new Game();
+
 	public static void main(String[] args) {
-		Game game = new Game();
-		game.initialize();
+			game.initialize();
 	}
 }

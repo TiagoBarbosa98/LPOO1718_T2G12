@@ -24,17 +24,20 @@ public class Suspicious extends Guard{
 			if (!reverse) {
 				movement = rev_sequence;
 				reverse = true;
-				
+				index -= 1;
 			} else if (reverse) {
 				movement = sequence;
 				reverse = false;
+				index += 1;
 			}
 		}
 		if(reverse) {
-			this.moveReverse();
+			this.move();
+			index--;
 		}
 		else if(!reverse) {
-			this.moveForward();
+			this.move();
+			index++;
 		}
 
 	}

@@ -1,8 +1,8 @@
 package dkeep.logic;
 
-public class Key extends Object{
+public class Key extends Entity{
 	
-	private Door door1, door2;
+	protected Door door1, door2;
 	
 	//constructor of a key for single door
 	public Key(int posx, int posy, Map map, Door door1) 
@@ -21,5 +21,8 @@ public class Key extends Object{
 		this.door1 = door1;
 		this.door2 = door2;		
 	}
+
+	@Override
+	public void updateEntity() {}
 	
 }

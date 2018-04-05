@@ -18,8 +18,8 @@ public abstract class Guard extends Entity {
 	@Override
 	public abstract void updateEntity();
 	
-	public void moveForward() {
-		int i = index % movement.length();
+	public void move() {
+		int i = Math.floorMod(index, movement.length());
 		
 		char first = movement.charAt(i);
 		
@@ -85,50 +85,5 @@ public abstract class Guard extends Entity {
 			x = old_x;
 			y = old_y;
 		}
-		index++;
 	}
-	
-	public void moveReverse() {
-		int i = index % movement.length();
-		
-		char first = movement.charAt(i);
-		
-		switch (first) {
-		case 'W' | 'w':
-			if (map.getMap()[x - 1][y] != 'I') {
-				this.old_y = y;
-				this.old_x = x;
-				this.x--;
-			}
-			break;
-		case 'S' | 's':
-			if (map.getMap()[x + 1][y] != 'I') {
-				this.old_y = y;
-				this.old_x = x;
-				this.x++;
-			}
-			break;
-		case 'A' | 'a':
-			if (map.getMap()[x][y - 1] != 'I') {
-				this.old_x = x;
-				this.old_y = y;
-				this.y--;
-			}
-			break;
-		case 'D' | 'd':
-			if (map.getMap()[x][y + 1] != 'I') {
-				this.old_x = x;
-				this.old_y = y;
-				this.y++;
-			}
-			break;
-		}
-
-		if (map.getMap()[x][y] == 'X') {
-			x = old_x;
-			y = old_y;
-		}
-		index--;
-	}
-
 }
