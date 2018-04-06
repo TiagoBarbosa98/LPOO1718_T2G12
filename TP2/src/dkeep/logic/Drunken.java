@@ -4,11 +4,11 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class Drunken extends Guard {
 
-	boolean sleep = false;
+	boolean sleeping = false;
 	
 	boolean reverse = false;
 	
-	//number of iterations before he can sleep again
+	//number of iterations before he can sleeping again
 	int time_out_s = 0;
 	
 	public Drunken(int posx, int posy, Map map) {
@@ -20,16 +20,16 @@ public class Drunken extends Guard {
 
 	@Override
 	public void updateEntity() {
-		//random int that defines probability of drunken falling asleep
-		int sleep_prob = ThreadLocalRandom.current().nextInt(0, 2 + 1);
+		//random int that defines probability of drunken falling asleeping
+		int sleeping_prob = ThreadLocalRandom.current().nextInt(0, 2 + 1);
 		//random int that defines probability of drunken waking up
 		int wake_prob = ThreadLocalRandom.current().nextInt(0, 1 + 1);
 		//random int that defines probability of drunken turning backwards
 		int turn_prob = ThreadLocalRandom.current().nextInt(0, 1 + 1);
 		
-		if(!sleep && time_out_s == 0) {
-			if(sleep_prob == 0) {
-				sleep = true;
+		if(!sleeping && time_out_s == 0) {
+			if(sleeping_prob == 0) {
+				sleeping = true;
 				this.symbol = 'g';
 			}
 			else {
@@ -43,7 +43,7 @@ public class Drunken extends Guard {
 				}
 			}
 		}
-		else if(!sleep && time_out_s != 0) {
+		else if(!sleeping && time_out_s != 0) {
 			if(!reverse) {
 				this.move();
 				index++;
@@ -54,9 +54,9 @@ public class Drunken extends Guard {
 			}
 			time_out_s --;
 		}
-		else if(sleep) {
+		else if(sleeping) {
 			if(wake_prob == 0) {
-				sleep = false;
+				sleeping = false;
 				this.symbol = 'G';
 				time_out_s = 5;
 				if(turn_prob == 0) {

@@ -10,28 +10,27 @@ public class Game {
 	public Game(){}
 
 	public void initialize() {
-
 		map = new Level1(this);
-		map.draw();
-		
 		while (!gameover) {
-			System.out.println(state);
 			switch (state) {
 			case MENU:
 			case LEVEL1:
+				map.draw();
 				map.gameLogic();
 				break;
 			case LEVEL2:
+				map.draw();
 				map.gameLogic();
 				break;
 			case WIN:
 				gameover = true;
+				map.draw();
 				break;
 			case LOSE:
 				gameover = true;
+				map.draw();
 				break;
 			}
-			
 		}
 	}
 	

@@ -9,7 +9,7 @@ public abstract class Map {
 	protected ArrayList<Entity> entities = new ArrayList<Entity>();	
 	
 	//updated map
-	protected char[][] map = new char[10][10];
+	protected char[][] map;
 	
 	//base map
 	protected char[][] basemap;

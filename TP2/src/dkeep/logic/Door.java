@@ -3,7 +3,7 @@ package dkeep.logic;
 public class Door extends Entity {
 	
 	//true is the door is opened, and false if the door is closed
-	private boolean isOpen;
+	protected boolean isOpen;
 	
 	private Door door1;
 	

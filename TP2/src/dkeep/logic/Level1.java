@@ -38,6 +38,7 @@ public class Level1 extends Map {
 				{ 'X', 'X', 'X', ' ', 'X', 'X', 'X', 'X', ' ', 'X' },
 				{ 'X', ' ', ' ', ' ', ' ', ' ', 'X', ' ', ' ', 'X' },
 				{ 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X' } };
+		this.map = new char[10][10];
 	}
 
 	
@@ -45,7 +46,11 @@ public class Level1 extends Map {
 	@Override
 	public void gameLogic() {
 		this.updateEntities();
-		this.draw();
+		this.drawEntities();
+		if(map[hero.x][hero.y] == 'I') {
+			hero.x = hero.old_x;
+			hero.y = hero.old_y;
+		}
 		this.heroCollision();
 		this.leverStepped();
 		this.enterDoor();
@@ -64,19 +69,18 @@ public class Level1 extends Map {
 			key.door1.openDoor();
 			key.door2.openDoor();
 			key.symbol = ' ';
-			this.draw();
 		}
 	}
 
 	public void heroCollision() {
 		if (hero.getY() != 0) {
-			if (map[hero.getX()][hero.getY() + 1] == 'G') {
+			if (hero.getX() == guard.getX() && hero.getY() == guard.getY() - 1 && !guard.sleeping) {
 				game.state = Game.State.LOSE;
-			} else if (map[hero.getX()][hero.getY() - 1] == 'G') {
+			} else if (hero.getX() == guard.getX() && hero.getY() == guard.getY() + 1 && !guard.sleeping) {
 				game.state = Game.State.LOSE;
-			} else if (map[hero.getX() + 1][hero.getY()] == 'G') {
+			} else if (hero.getX() == guard.getX() + 1 && hero.getY() == guard.getY() && !guard.sleeping) {
 				game.state = Game.State.LOSE;
-			} else if (map[hero.getX() - 1][hero.getY()] == 'G') {
+			} else if (hero.getX() == guard.getX() - 1 && hero.getY() == guard.getY() && !guard.sleeping) {
 				game.state = Game.State.LOSE;
 			} else if (hero.getX() == guard.getX() && hero.getY() == guard.getY()) {
 				game.state = Game.State.LOSE;
@@ -88,12 +92,10 @@ public class Level1 extends Map {
 		if (hero.getX() == door4.getX() && hero.getY() == door4.getY()) {
 			this.game.state = Game.State.LEVEL2;
 			this.game.map = new Level2(this.game);
-			this.game.map.draw();
 		}
 		else if (hero.getX() == door5.getX() && hero.getY() == door5.getY()) {
 			this.game.state = Game.State.LEVEL2;
 			this.game.map = new Level2(this.game);
-			this.game.map.draw();
 		}
 	}
 }
