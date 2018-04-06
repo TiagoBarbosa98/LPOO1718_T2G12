@@ -10,6 +10,7 @@ public class Level2 extends Map{
 	Club sword = new Club(7, 2, null, this);
 	
 	private boolean keyArmed = false;
+	private boolean swordArmed = false;
 	
 	public Level2(Game game) {
 		super(game);
@@ -83,9 +84,50 @@ public class Level2 extends Map{
 				game.state = Game.State.LOSE;
 			} else if (hero.getX() == club.getX() && hero.getY() == club.getY()) {
 				game.state = Game.State.LOSE;
+			} else if (hero.getX() == sword.getX() && hero.getY() == sword.getY()) {
+				hero.symbol = 'A';
+				sword.symbol = ' ';
+				swordArmed = true;
+
+			} else if (hero.getX() == ogre.getX() && hero.getY() == ogre.getY() - 1) {
+				if (swordArmed) {
+					ogre.stunned = true;
+					ogre.stun_time = 4;
+					ogre.symbol = '8';
+				} else {
+					game.state = Game.State.LOSE;
+				}
+			}
+			else if (hero.getX() == ogre.getX() && hero.getY() == ogre.getY() + 1) {
+				if (swordArmed) {
+					ogre.stunned = true;
+					ogre.stun_time = 4;
+					ogre.symbol = '8';
+				} else {
+					game.state = Game.State.LOSE;
+				}
+			}
+			else if (hero.getX() == ogre.getX() + 1 && hero.getY() == ogre.getY()) {
+				if (swordArmed) {
+					ogre.stunned = true;
+					ogre.stun_time = 4;
+					ogre.symbol = '8';
+				} else {
+					game.state = Game.State.LOSE;
+				}
+			}
+			else if (hero.getX() == ogre.getX() - 1 && hero.getY() == ogre.getY()) {
+				if (swordArmed) {
+					ogre.stunned = true;
+					ogre.stun_time = 4;
+					ogre.symbol = '8';
+				} else {
+					game.state = Game.State.LOSE;
+				}
+			} else if (hero.getX() == ogre.getX() && hero.getY() == ogre.getY()) {
+				game.state = Game.State.LOSE;
 			}
 		}
-		
 	}
 
 	public void resetMap() {
