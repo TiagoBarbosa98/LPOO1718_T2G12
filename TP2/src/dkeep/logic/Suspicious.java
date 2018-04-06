@@ -36,8 +36,8 @@ public class Suspicious extends Guard{
 			index--;
 		}
 		else if(!reverse) {
-			this.move();
-			index++;
+			move();
+			index = index + 1;
 		}
 
 	}

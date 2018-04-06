@@ -38,19 +38,19 @@ public class Drunken extends Guard {
 					index++;
 				}
 				else if(reverse) {
-					this.move();
-					index--;
+					move();
+					index -= 1;
 				}
 			}
 		}
 		else if(!sleep && time_out_s != 0) {
 			if(!reverse) {
 				this.move();
-				index++;
+				index = index + 1;
 			}
 			else if(reverse) {
 				this.move();
-				index--;
+				index = index - 1;
 			}
 			time_out_s --;
 		}
