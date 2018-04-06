@@ -45,7 +45,7 @@ public class Level1 extends Map {
 	@Override
 	public void gameLogic() {
 		this.updateEntities();
-		hero.updateHero();
+		hero.updateHero(hero.getChar());
 		this.draw();
 		checkEndLevel();
 	}

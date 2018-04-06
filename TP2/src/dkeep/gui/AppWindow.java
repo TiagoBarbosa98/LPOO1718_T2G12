@@ -21,8 +21,7 @@ import java.awt.Font;
 public class AppWindow {
 
 	private JFrame frmDungeonKeep;
-	private JTextField fldOgresInput;
-	private static Game game = new Game();
+	Game game;
 
 	/**
 	 * Launch the application.
@@ -46,11 +45,17 @@ public class AppWindow {
 	public AppWindow() {
 		initialize();
 	}
+	
+	public Game getGame()
+	{
+		return game;
+	}
  
 	/**
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
+		game = new Game();
 		frmDungeonKeep = new JFrame();
 		frmDungeonKeep.setTitle("Dungeon Keep");
 		frmDungeonKeep.setResizable(false);
@@ -58,14 +63,14 @@ public class AppWindow {
 		frmDungeonKeep.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmDungeonKeep.getContentPane().setLayout(null);
 		
-		GameStatusLabel gameStatus = new GameStatusLabel(frmDungeonKeep);
 		GuardPersoInput guardInput = new GuardPersoInput(frmDungeonKeep);
 		GuardPersoMsg guardMsg = new GuardPersoMsg(frmDungeonKeep);
-		MapTextArea textArea = new MapTextArea(frmDungeonKeep);
-		MovementButtons movButtons = new MovementButtons(frmDungeonKeep, game, textArea);
+		MapTextArea textArea = new MapTextArea(frmDungeonKeep, game);
+		GameStatusLabel gameStatus = new GameStatusLabel(frmDungeonKeep, textArea, game);
+		MovementButtons movButtons = new MovementButtons(frmDungeonKeep, textArea, game);
 		NumberOgresInput ogresInput = new NumberOgresInput(frmDungeonKeep);
 		NumberOgresMsg ogresMsg = new NumberOgresMsg(frmDungeonKeep);
-		NewExitButtons newExitButtons = new NewExitButtons(frmDungeonKeep, game, movButtons, gameStatus);
+		NewExitButtons newExitButtons = new NewExitButtons(frmDungeonKeep, movButtons, gameStatus, this);
 		
 		//Delete this after final changes
 	
