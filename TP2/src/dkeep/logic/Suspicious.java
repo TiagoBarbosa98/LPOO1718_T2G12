@@ -2,18 +2,34 @@ package dkeep.logic;
 
 import java.util.concurrent.ThreadLocalRandom;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class Suspicious.
+ */
 public class Suspicious extends Guard{
 
+	/** The sleep. */
 	boolean sleep = false;
 	
+	/** The reverse. */
 	boolean reverse = false;
 	
+	/**
+	 * Instantiates a new suspicious.
+	 *
+	 * @param posx the posx
+	 * @param posy the posy
+	 * @param map the map
+	 */
 	public Suspicious(int posx, int posy, Map map) {
 		super(posx, posy, map);
 		movement = sequence;
 		index = 0;
 	}
 
+	/* (non-Javadoc)
+	 * @see dkeep.logic.Guard#updateEntity()
+	 */
 	@Override
 	public void updateEntity() {
 

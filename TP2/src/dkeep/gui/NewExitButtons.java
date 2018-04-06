@@ -11,19 +11,32 @@ import javax.swing.JLabel;
 import dkeep.logic.Game;
 
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class NewExitButtons.
+ */
 public class NewExitButtons {
-	public NewExitButtons(JFrame frame, MovementButtons buttons, GameStatusLabel status, AppWindow window)
+	
+	/**
+	 * Instantiates a new new exit buttons.
+	 *
+	 * @param frame the frame
+	 * @param game the game
+	 * @param movButtons the mov buttons
+	 * @param gameStatus the game status
+	 */
+	public NewExitButtons(JFrame frame, Game game, MovementButtons movButtons, GameStatusLabel gameStatus)
 	{
 		JButton btnNewGame = new JButton("New Game");
 		btnNewGame.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
 				//Changing the game status label
-				status.setText("<html>Playing the game.</html>");
+				movButtons.setText("<html>Playing the game.</html>");
 				
 				//Enabling movement input
-				buttons.enableMovementInput();
-				window.game = new Game();
+				game.enableMovementInput();
+				gameStatus.game = new Game();
 			}
 		});
 		

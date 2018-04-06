@@ -2,12 +2,26 @@ package dkeep.logic;
 
 import java.util.concurrent.ThreadLocalRandom;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class Ogre.
+ */
 public class Ogre extends Entity{
 	
+	/** The stunned. */
 	protected boolean stunned = false;
-	 //number of rounds that ogre passes stunned
+	 
+ 	/** The stun time. */
+ 	//number of rounds that ogre passes stunned
 	protected int stun_time = 0;
 	
+	/**
+	 * Instantiates a new ogre.
+	 *
+	 * @param posx the posx
+	 * @param posy the posy
+	 * @param map the map
+	 */
 	//constructor
 	public Ogre(int posx, int posy, Map map) 
 	{
@@ -16,6 +30,9 @@ public class Ogre extends Entity{
 		symbol = 'O';
 	}
 
+	/* (non-Javadoc)
+	 * @see dkeep.logic.Entity#updateEntity()
+	 */
 	@Override
 	public void updateEntity() {
 		// random number that defines ogre's movement direction (index)

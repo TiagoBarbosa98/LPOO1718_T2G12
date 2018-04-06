@@ -2,17 +2,31 @@ package dkeep.logic;
 
 import java.util.concurrent.ThreadLocalRandom;
 
+/**
+ * The Class Club.
+ */
 public class Club extends Entity{
 
-	//Ogre that owns this club
+	/** The ogre that owns this club. */
 	protected Ogre ogre;
 	
+	/**
+	 * Instantiates a new club.
+	 *
+	 * @param xpos the xpos
+	 * @param ypos the ypos
+	 * @param ogre the ogre
+	 * @param map the map
+	 */
 	public Club(int xpos, int ypos, Ogre ogre, Map map) {
 		super(xpos, ypos, map);
 		symbol = '*';
 		this.ogre = ogre;
 	}
 
+	/* (non-Javadoc)
+	 * @see dkeep.logic.Entity#updateEntity()
+	 */
 	@Override
 	public void updateEntity() {
 		if(this.ogre != null)

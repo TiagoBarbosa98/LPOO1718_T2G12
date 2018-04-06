@@ -2,15 +2,28 @@ package dkeep.logic;
 
 import java.util.concurrent.ThreadLocalRandom;
 
+/**
+ * The Class Drunken.
+ */
 public class Drunken extends Guard {
 
+	/** The sleeping. */
 	boolean sleeping = false;
 	
+	/** The reverse. */
 	boolean reverse = false;
 	
+	/** The time out s. */
 	//number of iterations before he can sleeping again
 	int time_out_s = 0;
 	
+	/**
+	 * Instantiates a new drunken.
+	 *
+	 * @param posx the posx
+	 * @param posy the posy
+	 * @param map the map
+	 */
 	public Drunken(int posx, int posy, Map map) {
 		super(posx, posy, map);
 		movement = sequence;
@@ -18,6 +31,9 @@ public class Drunken extends Guard {
 		
 	}
 
+	/* (non-Javadoc)
+	 * @see dkeep.logic.Guard#updateEntity()
+	 */
 	@Override
 	public void updateEntity() {
 		//random int that defines probability of drunken falling asleeping

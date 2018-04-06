@@ -10,15 +10,38 @@ import javax.swing.JTextArea;
 
 import dkeep.logic.Game;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class MovementButtons.
+ */
 public class MovementButtons{
+	
+	/** The btn DOWN. */
 	JButton btnDOWN = new JButton("Down");
+	
+	/** The btn LEFT. */
 	JButton btnLEFT = new JButton("Left");
+	
+	/** The btn UP. */
 	JButton btnUP = new JButton("Up");
+	
+	/** The btn RIGHT. */
 	JButton btnRIGHT = new JButton("Right");
+	
+	/** The text area. */
 	private static MapTextArea textArea;
+	
+	/** The game. */
 	private static Game game;
 	
 	
+	/**
+	 * Instantiates a new movement buttons.
+	 *
+	 * @param frame the frame
+	 * @param textArea the text area
+	 * @param game the game
+	 */
 	public MovementButtons(JFrame frame, MapTextArea textArea, Game game)
 	{
 		this.textArea = textArea;
@@ -92,6 +115,9 @@ public class MovementButtons{
 	}
 	
 	
+	/**
+	 * Enable movement input.
+	 */
 	public void enableMovementInput()
 	{
 		btnDOWN.setEnabled(true);
@@ -100,6 +126,12 @@ public class MovementButtons{
 		btnLEFT.setEnabled(true);
 	}
 	
+	/**
+	 * Update game.
+	 *
+	 * @param x the x
+	 * @param y the y
+	 */
 	public void updateGame(int x, int y)
 	{
 		Hero hero = game.getHero();

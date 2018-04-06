@@ -18,14 +18,25 @@ import java.awt.event.ActionEvent;
 import javax.swing.JTextArea;
 import java.awt.Font;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class AppWindow.
+ */
 public class AppWindow {
 
+	/** The frm dungeon keep. */
 	private JFrame frmDungeonKeep;
+	
+	/** The fld ogres input. */
 	private JTextField fldOgresInput;
-	private static Game game = new Game();
+	
+	/** The game. */
+	protected static Game game = new Game();
 
 	/**
 	 * Launch the application.
+	 *
+	 * @param args the arguments
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -58,11 +69,11 @@ public class AppWindow {
 		frmDungeonKeep.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmDungeonKeep.getContentPane().setLayout(null);
 		
-		GameStatusLabel gameStatus = new GameStatusLabel(frmDungeonKeep);
+		GameStatusLabel gameStatus = new GameStatusLabel(frmDungeonKeep, null, null);
 		GuardPersoInput guardInput = new GuardPersoInput(frmDungeonKeep);
 		GuardPersoMsg guardMsg = new GuardPersoMsg(frmDungeonKeep);
-		MapTextArea textArea = new MapTextArea(frmDungeonKeep);
-		MovementButtons movButtons = new MovementButtons(frmDungeonKeep, game, textArea);
+		MapTextArea textArea = new MapTextArea(frmDungeonKeep, null);
+		MovementButtons movButtons = new MovementButtons(frmDungeonKeep, textArea, game);
 		NumberOgresInput ogresInput = new NumberOgresInput(frmDungeonKeep);
 		NumberOgresMsg ogresMsg = new NumberOgresMsg(frmDungeonKeep);
 		NewExitButtons newExitButtons = new NewExitButtons(frmDungeonKeep, game, movButtons, gameStatus);

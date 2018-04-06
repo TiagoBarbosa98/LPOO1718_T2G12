@@ -6,10 +6,20 @@ import java.util.regex.Pattern;
 import javax.swing.JFrame;
 import javax.swing.JTextField;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class NumberOgresInput.
+ */
 public class NumberOgresInput {
 	
+	/** The fld ogres input. */
 	private JTextField fldOgresInput;
 	
+	/**
+	 * Instantiates a new number ogres input.
+	 *
+	 * @param frame the frame
+	 */
 	public NumberOgresInput(JFrame frame)
 	{
 		fldOgresInput = new JTextField();
