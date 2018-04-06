@@ -221,4 +221,47 @@ public abstract class Entity {
 			y = old_y;
 		}
 	}
+	
+	public void doSomething(char first)
+	{
+		switch (first) {
+		
+		case 'w':
+			if (map.getMap()[x - 1][y] != 'I') {
+				this.old_y = y;
+				this.old_x = x;
+				this.x--;
+			}
+			break;
+		
+		case 's':
+			if (map.getMap()[x + 1][y] != 'I') {
+				this.old_y = y;
+				this.old_x = x;
+				this.x++;
+			}
+			break;
+		
+		case 'a':
+			if (map.getMap()[x][y - 1] != 'I') {
+				this.old_x = x;
+				this.old_y = y;
+				this.y--;
+			}
+			break;
+		
+		case 'd':
+			if (map.getMap()[x][y + 1] != 'I') {
+				this.old_x = x;
+				this.old_y = y;
+				this.y++;
+			}
+			break;
+		}
+
+		if (map.getMap()[x][y] == 'X') {
+			x = old_x;
+			y = old_y;
+		}
+	}
 }

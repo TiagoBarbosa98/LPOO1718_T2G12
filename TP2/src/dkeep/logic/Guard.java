@@ -37,4 +37,12 @@ public abstract class Guard extends Entity {
 	@Override
 	public abstract void updateEntity();
 	
+	public void move() {
+		int i = Math.floorMod(index, movement.length());
+		
+		char first = movement.charAt(i);
+		char input = Character.toLowerCase(first);
+		
+		doSomething(input);
+	}
 }
