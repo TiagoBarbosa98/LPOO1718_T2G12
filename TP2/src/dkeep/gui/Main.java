@@ -1,4 +1,4 @@
-package dkeep.cli;
+package dkeep.gui;
 
 import dkeep.logic.Game;
 

@@ -2,7 +2,7 @@ package dkeep.logic;
 
 import java.util.Scanner;
 
-import dkeep.cli.Main;
+import dkeep.gui.Main;
 
 public class Hero extends Entity{
 	
