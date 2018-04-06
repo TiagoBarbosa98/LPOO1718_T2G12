@@ -39,7 +39,7 @@ public class Drunken extends Guard {
 				}
 				else if(reverse) {
 					move();
-					index -= 1;
+					index--;
 				}
 			}
 		}
@@ -49,7 +49,7 @@ public class Drunken extends Guard {
 				index = index + 1;
 			}
 			else if(reverse) {
-				this.move();
+				move();
 				index = index - 1;
 			}
 			time_out_s --;
