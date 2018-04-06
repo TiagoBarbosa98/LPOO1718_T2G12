@@ -1,5 +1,6 @@
 package dkeep.gui;
 
+import dkeep.logic.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -9,14 +10,20 @@ import javax.swing.JTextArea;
 
 import dkeep.logic.Game;
 
-public class MovementButtons {
+public class MovementButtons{
 	JButton btnDOWN = new JButton("Down");
 	JButton btnLEFT = new JButton("Left");
 	JButton btnUP = new JButton("Up");
 	JButton btnRIGHT = new JButton("Right");
+	private static MapTextArea textArea;
+	private static Game game;
 	
-	public MovementButtons(JFrame frame, Game game, MapTextArea textArea)
+	
+	public MovementButtons(JFrame frame, MapTextArea textArea, Game game)
 	{
+		this.textArea = textArea;
+		this.game = game;
+		
 		btnDOWN.setBounds(331, 182, 65, 25);
 		frame.getContentPane().add(btnDOWN);
 		btnDOWN.setEnabled(false);
@@ -42,10 +49,8 @@ public class MovementButtons {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				//same as if the user had pressed the S key
-				game.getHero().setOldX(game.getHero().getX());
-				game.getHero().setOldY(game.getHero().getY());
-				game.getHero().setX(game.getHero().getX() + 1);
+				//same as if the user had pressed the S key				
+				updateGame(1, 0);
 			}
 		});
 
@@ -54,17 +59,10 @@ public class MovementButtons {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				//same as if the user had pressed the A key
-				game.getHero().setOldX(game.getHero().getX());
-				game.getHero().setOldY(game.getHero().getY());
-				game.getHero().setY(game.getHero().getY() - 1);
+				updateGame(0, -1);
 
-				//make changes to Game class first to correct this code
 				/*TODO*/
-				//clears the text area
-				textArea.setText(null);
-				//game.playGame(); //without the update entity
-				game.setBuffer();
+
 			}
 		});
 
@@ -73,9 +71,7 @@ public class MovementButtons {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				//same as if the user had pressed the W key
-				game.getHero().setOldX(game.getHero().getX());
-				game.getHero().setOldY(game.getHero().getY());
-				game.getHero().setX(game.getHero().getX() - 1);
+				updateGame(-1, 0);
 				
 			}
 		});
@@ -86,9 +82,11 @@ public class MovementButtons {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				//same as if the user had pressed the D key
-				game.getHero().setOldX(game.getHero().getX());
-				game.getHero().setOldY(game.getHero().getY());
-				game.getHero().setY(game.getHero().getY() + 1);
+				Map map = game.getMap();
+				Hero hero = game.getHero();
+				if (map.getMap()[hero.getX()][game.getMap().getHero().getY() - 1] != 'I') {
+					updateGame(0, 1);
+					}
 			}
 		});
 	}
@@ -100,5 +98,25 @@ public class MovementButtons {
 		btnUP.setEnabled(true);
 		btnRIGHT.setEnabled(true);
 		btnLEFT.setEnabled(true);
+	}
+	
+	public void updateGame(int x, int y)
+	{
+		Hero hero = game.getHero();
+		Map map = game.getMap();
+		
+		
+		hero.setOldX(hero.getX());
+		hero.setOldY(hero.getY());
+		hero.setX(hero.getX() + x);
+		hero.setY(hero.getY() + y);
+		
+		
+		map.updateEntities();
+		map.resetMap();
+		map.drawEntities();
+			
+		
+		textArea.drawMap(map.getMap());
 	}
 }

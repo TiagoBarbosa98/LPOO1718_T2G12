@@ -45,7 +45,13 @@ public class Level1 extends Map {
 	@Override
 	public void gameLogic() {
 		this.updateEntities();
+		hero.updateHero();
 		this.draw();
+		checkEndLevel();
+	}
+	
+	public void checkEndLevel()
+	{
 		this.heroCollision();
 		this.leverStepped();
 		this.enterDoor();
@@ -96,4 +102,5 @@ public class Level1 extends Map {
 			this.game.map.draw();
 		}
 	}
+	
 }

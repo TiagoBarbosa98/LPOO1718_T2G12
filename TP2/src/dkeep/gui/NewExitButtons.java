@@ -1,5 +1,6 @@
 package dkeep.gui;
 
+import dkeep.gui.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -11,7 +12,7 @@ import dkeep.logic.Game;
 
 
 public class NewExitButtons {
-	public NewExitButtons(JFrame frame, Game game, MovementButtons buttons, GameStatusLabel status)
+	public NewExitButtons(JFrame frame, MovementButtons buttons, GameStatusLabel status, AppWindow window)
 	{
 		JButton btnNewGame = new JButton("New Game");
 		btnNewGame.addActionListener(new ActionListener() {
@@ -22,6 +23,7 @@ public class NewExitButtons {
 				
 				//Enabling movement input
 				buttons.enableMovementInput();
+				window.game = new Game();
 			}
 		});
 		
