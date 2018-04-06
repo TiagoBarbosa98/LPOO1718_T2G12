@@ -57,11 +57,17 @@ public class AppWindow {
 	public AppWindow() {
 		initialize();
 	}
+	
+	public Game getGame()
+	{
+		return game;
+	}
  
 	/**
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
+		game = new Game();
 		frmDungeonKeep = new JFrame();
 		frmDungeonKeep.setTitle("Dungeon Keep");
 		frmDungeonKeep.setResizable(false);
@@ -69,14 +75,14 @@ public class AppWindow {
 		frmDungeonKeep.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmDungeonKeep.getContentPane().setLayout(null);
 		
-		GameStatusLabel gameStatus = new GameStatusLabel(frmDungeonKeep, null, null);
 		GuardPersoInput guardInput = new GuardPersoInput(frmDungeonKeep);
 		GuardPersoMsg guardMsg = new GuardPersoMsg(frmDungeonKeep);
-		MapTextArea textArea = new MapTextArea(frmDungeonKeep, null);
+		MapTextArea textArea = new MapTextArea(frmDungeonKeep, game);
+		GameStatusLabel gameStatus = new GameStatusLabel(frmDungeonKeep, textArea, game);
 		MovementButtons movButtons = new MovementButtons(frmDungeonKeep, textArea, game);
 		NumberOgresInput ogresInput = new NumberOgresInput(frmDungeonKeep);
 		NumberOgresMsg ogresMsg = new NumberOgresMsg(frmDungeonKeep);
-		NewExitButtons newExitButtons = new NewExitButtons(frmDungeonKeep, game, movButtons, gameStatus);
+		NewExitButtons newExitButtons = new NewExitButtons(frmDungeonKeep, movButtons, gameStatus, this);
 		
 		//Delete this after final changes
 	

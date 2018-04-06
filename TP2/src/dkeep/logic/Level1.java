@@ -77,11 +77,13 @@ public class Level1 extends Map {
 	@Override
 	public void gameLogic() {
 		this.updateEntities();
-		this.drawEntities();
-		if(map[hero.x][hero.y] == 'I') {
-			hero.x = hero.old_x;
-			hero.y = hero.old_y;
-		}
+		hero.updateHero(hero.getChar());
+		this.draw();
+		checkEndLevel();
+	}
+	
+	public void checkEndLevel()
+	{
 		this.heroCollision();
 		this.leverStepped();
 		this.enterDoor();
