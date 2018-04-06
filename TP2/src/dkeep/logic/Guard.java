@@ -22,15 +22,10 @@ public abstract class Guard extends Entity {
 		int i = Math.floorMod(index, movement.length());
 		
 		char first = movement.charAt(i);
+		char input = Character.toLowerCase(first);
 		
 		switch (first) {
-		case 'W':
-			if (map.getMap()[x - 1][y] != 'I') {
-				this.old_y = y;
-				this.old_x = x;
-				this.x--;
-			}
-			break;
+		
 		case 'w':
 			if (map.getMap()[x - 1][y] != 'I') {
 				this.old_y = y;
@@ -38,12 +33,7 @@ public abstract class Guard extends Entity {
 				this.x--;
 			}
 			break;
-		case 'S':
-			if (map.getMap()[x + 1][y] != 'I') {
-				this.old_y = y;
-				this.old_x = x;
-				this.x++;
-			}
+		
 		case 's':
 			if (map.getMap()[x + 1][y] != 'I') {
 				this.old_y = y;
@@ -51,13 +41,7 @@ public abstract class Guard extends Entity {
 				this.x++;
 			}
 			break;
-		case 'A':
-			if (map.getMap()[x][y - 1] != 'I') {
-				this.old_x = x;
-				this.old_y = y;
-				this.y--;
-			}
-			break;
+		
 		case 'a':
 			if (map.getMap()[x][y - 1] != 'I') {
 				this.old_x = x;
@@ -65,13 +49,7 @@ public abstract class Guard extends Entity {
 				this.y--;
 			}
 			break;
-		case 'D':
-			if (map.getMap()[x][y + 1] != 'I') {
-				this.old_x = x;
-				this.old_y = y;
-				this.y++;
-			}
-			break;
+		
 		case 'd':
 			if (map.getMap()[x][y + 1] != 'I') {
 				this.old_x = x;
