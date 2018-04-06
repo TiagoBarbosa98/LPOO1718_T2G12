@@ -12,7 +12,6 @@ public class GuardPersoInput {
 		String[] ogrePersonalities = {"Rookie", "Drunken", "Suspicious"};
 		JComboBox comboBox = new JComboBox(ogrePersonalities);
 		comboBox.setToolTipText("");
-		comboBox.setEditable(true);
 		comboBox.setBackground(Color.WHITE);
 		comboBox.setBounds(120, 42, 121, 22);
 		frame.getContentPane().add(comboBox);

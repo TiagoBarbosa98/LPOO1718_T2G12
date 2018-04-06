@@ -4,6 +4,7 @@ import java.util.ArrayList;
 public abstract class Map {
 	
 	protected Game game;
+	protected Hero hero = new Hero(1, 1, this);
 	
 	//list of entities
 	protected ArrayList<Entity> entities = new ArrayList<Entity>();	
@@ -63,5 +64,14 @@ public abstract class Map {
 	}
 	
 	public abstract void resetMap();
+	public Hero getHero()
+	{
+		return hero;
+	}
+	
+	public char[][] getBaseMap()
+	{
+		return basemap;
+	}
 }
 

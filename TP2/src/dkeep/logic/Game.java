@@ -7,7 +7,9 @@ public class Game {
 	public enum State {MENU, LEVEL1, LEVEL2, WIN, LOSE}
 	public State state = Game.State.LEVEL1;
 	
-	public Game(){}
+	public Game() {
+		map = new Level1(this);
+	}
 
 	public void initialize() {
 		map = new Level1(this);
@@ -37,5 +39,15 @@ public class Game {
 	public Map getMap()
 	{
 		return map;
+	}
+	
+	public Hero getHero()
+	{
+		return this.map.getHero();
+	}
+	
+	public boolean getGameOver()
+	{
+		return gameover;
 	}
 }

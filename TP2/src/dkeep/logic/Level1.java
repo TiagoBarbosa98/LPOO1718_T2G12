@@ -98,4 +98,5 @@ public class Level1 extends Map {
 			this.game.map = new Level2(this.game);
 		}
 	}
+	
 }
